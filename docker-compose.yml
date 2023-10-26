@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+     image: data-jpa-sample:0.0.1
+     ports: 
+      - 9090:9090
+     environment: 
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/retail_shopping?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: Anto@123
+     depends_on: 
+      - db
+   
+  db:
+    image: mysql:8.0.27
+    environment:
+      MYSQL_ROOT_PASSWORD: Anto@123
+      MYSQL_DATABASE: retail_shopping
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Anto@123
